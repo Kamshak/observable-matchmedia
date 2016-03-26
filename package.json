@@ -1,0 +1,39 @@
+{
+  "name": "observable-matchmedia",
+  "version": "0.0.1",
+  "description": "Provides an observable stream to matchMedia. You can register viewstates and transitions, wich will be emitted in the observable stream",
+  "registry": "npm",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/awaltert/observable-matchmedia.git"
+  },
+  "license": "MIT",
+  "keywords": [
+    "rxjs",
+    "observable",
+    "browser",
+    "matchMedia"
+  ],
+  "main": "app.js",
+  "author": {
+    "name": "André Waltert",
+    "email": "a.waltert@mailbox.org"
+  },
+  "scripts": {
+    "install-all": "npm install && typings install && jspm install"
+  },
+  "devDependencies": {
+    "jspm": "^0.16.31",
+    "lodash": "^4.6.1",
+    "systemjs": "^0.19.24",
+    "tslint": "^3.6.0",
+    "typescript": "^1.8.9",
+    "typings": "^0.7.9"
+  },
+  "dependencies": {},
+  "jspm": {
+    "configFile": "systemjs.conf.js",
+    "dependencies": {},
+    "devDependencies": {}
+  }
+}

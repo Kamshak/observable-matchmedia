@@ -1,0 +1,12 @@
+{
+  "dependencies": {},
+  "devDependencies": {
+    "lodash": "registry:npm/lodash#4.0.0+20160305082308"
+  },
+  "name": "future-stack",
+  "version": false,
+  "ambientDependencies": {},
+  "ambientDevDependencies": {
+    "rx": "registry:dt/rx#0.0.0+20160317120654"
+  }
+}

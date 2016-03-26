@@ -1,0 +1,13 @@
+﻿{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "sourceMap": true,
+    "declaration": true
+  },
+  "files": [
+    "typings/browser.d.ts",
+    "src/main.ts"
+  ]
+}
