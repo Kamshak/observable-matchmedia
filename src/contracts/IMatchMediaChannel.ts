@@ -1,6 +1,6 @@
-﻿import {Subscribable} from "rxjs/Observable";
+﻿import {Observable} from "rxjs/Observable";
+import {IMatchMediaChannelConfiguration} from "./IMatchMediaChannelConfiguration";
 
-export interface IMatchMediaChannel<TObserver> extends Subscribable<TObserver> {
-    channelName: string;
-    mediaQuery?: string;
+export interface IMatchMediaChannel<TObserver> extends IMatchMediaChannelConfiguration {
+    observable: Observable<TObserver>;
 }

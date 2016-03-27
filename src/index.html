@@ -5,7 +5,18 @@
 </head>
 
 <body>
-    <script src="../node_modules/rx/dist/rx.lite.js"></script>
+    <p>Observable matchMedia implementation</p>
+
+    <script type="text/javascript" src="../jspm_packages/system.js"></script>
+    <script type="text/javascript" src="../jspm_packages/system-polyfills.js"></script>
+    <script type="text/javascript" src="../systemjs.conf.js" ></script>
+    <script type="text/javascript">
+        System.import("./main.js").then(function (main) {
+            "use strict";
+            debugger;
+            main.bootstrap(window);
+        });
+    </script>
 
 </body>
 

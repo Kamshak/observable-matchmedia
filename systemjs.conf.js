@@ -8,6 +8,8 @@ System.config({
   },
 
   map: {
+    "es6-collections": "npm:es6-collections@0.5.6",
+    "lodash": "npm:lodash@4.6.1",
     "rxjs": "npm:rxjs@5.0.0-beta.3",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
@@ -34,6 +36,10 @@ System.config({
     },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "npm:lodash@4.6.1": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:process@0.11.2": {
       "assert": "github:jspm/nodelibs-assert@0.1.0"

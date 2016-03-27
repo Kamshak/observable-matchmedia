@@ -23,6 +23,8 @@
     "install-all": "npm install && typings install && jspm install"
   },
   "devDependencies": {
+    "browser-sync": "^2.11.2",
+    "es6-collections": "^0.5.6",
     "jspm": "^0.16.31",
     "lodash": "^4.6.1",
     "rxjs": "^5.0.0-beta.3",
@@ -35,6 +37,8 @@
   "jspm": {
     "configFile": "systemjs.conf.js",
     "dependencies": {
+      "es6-collections": "^0.5.6",
+      "lodash": "^4.6.1",
       "rxjs": "^5.0.0-beta.3"
     },
     "devDependencies": {}
