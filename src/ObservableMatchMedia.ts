@@ -1,38 +1,41 @@
-export interface INamedMediaQuery {
-    name: string;
-    mediaQuery: string;
-}
+//import * as Rx from "rxjs";
+//import Rxjs = require("rxjs");
 
-export class ObservableMatchMedia {
-    private _observers = [];
+//export interface INamedMediaQuery {
+//    name: string;
+//    mediaQuery: string;
+//}
 
-    constructor(window: Window, ...mediaQueries: INamedMediaQuery[]) {
-        ObservableMatchMedia.ensureMatchMediaIsPresent(window);
-        // this._handlerMap = new Map();
-        this.bootstrapMediaQueries(window, mediaQueries);
-    }
+//export class ObservableMatchMedia {
+//    private _observers = [];
 
-    private bootstrapMediaQueries(window: Window, mediaQueries: INamedMediaQuery[]) {
-        for (const named of mediaQueries) {
-            const list = window.matchMedia(named.mediaQuery);
-            this.registerHandlerFor(named.name, list);
-        }
-    }
+//    constructor(window: Window, ...mediaQueries: INamedMediaQuery[]) {
+//        ObservableMatchMedia.ensureMatchMediaIsPresent(window);
+//        // this._handlerMap = new Map();
+//        this.bootstrapMediaQueries(window, mediaQueries);
+//    }
 
-    private registerHandlerFor(identifier: string, list: MediaQueryList) {
-        this._observers[identifier] = Rx.Observable.fromEventPattern(
-            (listener) => list.addListener(listener),
-            (listener) => list.removeListener(listener)
-        );
-    }
+//    private bootstrapMediaQueries(window: Window, mediaQueries: INamedMediaQuery[]) {
+//        for (const named of mediaQueries) {
+//            const list = window.matchMedia(named.mediaQuery);
+//            this.registerHandlerFor(named.name, list);
+//        }
+//    }
 
-    private static ensureMatchMediaIsPresent(window: Window) {
-        if (!window.matchMedia) {
-            throw new Error("matchMedia must be present");
-        }
-    }
+//    private registerHandlerFor(identifier: string, list: MediaQueryList) {
+//        this._observers[identifier] = Rx.Observable.fromEventPattern(
+//            (listener) => list.addListener(listener),
+//            (listener) => list.removeListener(listener)
+//        );
+//    }
 
-    public Dispose() {
-        console.log("disposing");
-    }
-}
+//    private static ensureMatchMediaIsPresent(window: Window) {
+//        if (!window.matchMedia) {
+//            throw new Error("matchMedia must be present");
+//        }
+//    }
+
+//    public Dispose() {
+//        console.log("disposing");
+//    }
+//}

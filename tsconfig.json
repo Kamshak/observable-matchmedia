@@ -6,8 +6,10 @@
     "sourceMap": true,
     "declaration": true
   },
-  "files": [
-    "typings/browser.d.ts",
-    "src/main.ts"
+  "exclude": [
+    "jspm_packages",
+    "node_modules",
+    "typings/main.d.ts",
+    "typings/main"
   ]
 }

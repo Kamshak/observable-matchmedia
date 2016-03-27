@@ -27,26 +27,28 @@
     <Content Include="README.md" />
     <Compile Include="systemjs.conf.js" />
     <Content Include="src\index.html" />
-    <TypeScriptCompile Include="src\main.d.ts" />
+    <TypeScriptCompile Include="src\contracts\IMatchMediaChannel.ts" />
+    <TypeScriptCompile Include="src\contracts\IMatchMediaChannelConfiguration.ts" />
+    <TypeScriptCompile Include="src\contracts\IMatchMediaChannelFactory.ts" />
+    <TypeScriptCompile Include="src\impl\MatchMediaChannelFactory.ts" />
+    <TypeScriptCompile Include="src\impl\ObservableMatchMedia.ts" />
     <TypeScriptCompile Include="src\main.ts" />
     <TypeScriptCompile Include="src\ObservableMatchMedia.ts" />
-    <Compile Include="src\main.js" />
-    <Compile Include="src\ObservableMatchMedia.js" />
     <Content Include="test\media_queries.json" />
     <TypeScriptCompile Include="typings\browser.d.ts" />
     <TypeScriptCompile Include="typings\main.d.ts" />
-    <TypeScriptCompile Include="typings\browser\ambient\rx\index.d.ts" />
     <TypeScriptCompile Include="typings\browser\definitions\lodash\index.d.ts" />
     <TypeScriptCompile Include="typings\main\ambient\rx\index.d.ts" />
     <TypeScriptCompile Include="typings\main\definitions\lodash\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src" />
+    <Folder Include="src\contracts\" />
+    <Folder Include="src\impl\" />
     <Folder Include="test" />
     <Folder Include="typings" />
     <Folder Include="typings\browser" />
     <Folder Include="typings\browser\ambient" />
-    <Folder Include="typings\browser\ambient\rx" />
     <Folder Include="typings\browser\definitions" />
     <Folder Include="typings\browser\definitions\lodash" />
     <Folder Include="typings\main" />
