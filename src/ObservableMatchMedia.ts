@@ -1,12 +1,10 @@
-import {Observable} from "rx";
-
-interface INamedMediaQuery {
+export interface INamedMediaQuery {
     name: string;
     mediaQuery: string;
 }
 
 export class ObservableMatchMedia {
-    private _observers: Set;
+    private _observers = [];
 
     constructor(window: Window, ...mediaQueries: INamedMediaQuery[]) {
         ObservableMatchMedia.ensureMatchMediaIsPresent(window);
@@ -22,7 +20,7 @@ export class ObservableMatchMedia {
     }
 
     private registerHandlerFor(identifier: string, list: MediaQueryList) {
-        this._observers[identifier] = Observable.fromEventPattern(
+        this._observers[identifier] = Rx.Observable.fromEventPattern(
             (listener) => list.addListener(listener),
             (listener) => list.removeListener(listener)
         );
