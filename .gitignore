@@ -2,7 +2,7 @@
 # Created by https://www.gitignore.io/api/jspm,node,visualstudio,visualstudiocode
 
 ### transpiled ###
-**/*.js
+(test|src)/**/*.js
 **/*.js.map
 **/*.d.ts
 
