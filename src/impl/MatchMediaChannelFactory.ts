@@ -16,16 +16,23 @@ export default class MatchMediaChannelFactory implements IMatchMediaChannelFacto
     private _createdMediaChannels: Map<string, IMatchMediaChannel<MediaQueryList>>;
 
     constructor(window: Window) {
-        this._matchMedia = MatchMediaChannelFactory.ensureMatchMedia(window);
+        this._matchMedia = MatchMediaChannelFactory._ensureMatchMedia(window);
         this._createdMediaChannels = new Map<string, IMatchMediaChannel<MediaQueryList>>();
     }
 
     // region static methods
-    private  static ensureMatchMedia(window: Window): (mediaQuery: string) => MediaQueryList {
-        if (!window.matchMedia) {
+    private static _ensureMatchMedia(window: Window): (mediaQuery: string) => MediaQueryList {
+        if (!window || !window.matchMedia) {
             throw new Error("matchMedia must be defined on window");
         }
         return window.matchMedia;
+    }
+
+    private static _ensureValidConfiguration(config: IMatchMediaChannelConfiguration) {
+        if (!config || !config.channelName || !config.mediaQuery) {
+            throw new Error(`[MatchMediaChannelFactory]: 
+                config is not a valid instance of IMatchMediaChannelConfiguration`);
+        }
     }
     // endregion
 
@@ -53,6 +60,9 @@ export default class MatchMediaChannelFactory implements IMatchMediaChannelFacto
     // region interface IMatchMediaChannelFactory implementation
     public create(config: IMatchMediaChannelConfiguration): IMatchMediaChannel<MediaQueryList> {
         let createdMediaChannel: IMatchMediaChannel<MediaQueryList>;
+
+        MatchMediaChannelFactory._ensureValidConfiguration(config);
+
         if (this._createdMediaChannels.has(config.channelName)) {
             return this._createdMediaChannels.get(config.channelName);
         }
