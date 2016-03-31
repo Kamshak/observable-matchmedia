@@ -21,17 +21,34 @@ const bootstrap = (window) => {
     console.log("bootstrapping module...");
 
     const factory = new MatchMediaChannelFactory(window);
-    const channelConfiguration = _.valuesIn(configurations);
+    const channelConfiguration = _.map(_.keys(configurations), (configKey) => {
+        if (_.includes(configKey, "only")) {
+            return;
+        }
+        return configurations[configKey];
+    }).filter((val) => val !== undefined);
+
+    // const channelConfiguration = _.valuesIn(configurations);
+
     const observableMatchMedia =
         ObservableMatchMediaBuilder
             .createWith(factory)
             .addChannels(...channelConfiguration)
             .build();
 
-    const broadCastChannel: IMatchMediaChannel<MediaQueryList> = observableMatchMedia.broadcastChannel;
-    broadCastChannel.observable.subscribe((value) => {
-        console.log("observable called with: ", value);
+    const broadCastChannel: IMatchMediaChannel<MediaQueryList> = observableMatchMedia.broadcastChannel,
+          medium = observableMatchMedia.getChannel("medium"),
+
+          smallOnly = observableMatchMedia.getChannel(configurations["small-only"].channelName),
+          mediumOnly = observableMatchMedia.getChannel(configurations["medium-only"].channelName),
+          largeOnly = observableMatchMedia.getChannel(configurations["large-only"].channelName);
+
+    [smallOnly, mediumOnly, largeOnly, broadCastChannel].forEach((channel: IMatchMediaChannel<MediaQueryList>) => {
+        channel.observable.subscribe((value) => {
+            console.log(`[${channel.channelName}] called with: `, value);
+        });
     });
+
     console.log("bootstrapping finished");
 };
 

@@ -8,6 +8,7 @@ System.config({
   },
 
   map: {
+    "@reactivex/rxjs": "npm:@reactivex/rxjs@5.0.0-beta.4",
     "es6-collections": "npm:es6-collections@0.5.6",
     "jasmine": "npm:jasmine@2.4.1",
     "lodash": "npm:lodash@4.6.1",
@@ -43,6 +44,13 @@ System.config({
     },
     "github:jspm/nodelibs-util@0.1.0": {
       "util": "npm:util@0.10.3"
+    },
+    "npm:@reactivex/rxjs@5.0.0-beta.4": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "module": "github:jspm/nodelibs-module@0.1.0",
+      "path": "github:jspm/nodelibs-path@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:assert@1.3.0": {
       "util": "npm:util@0.10.3"

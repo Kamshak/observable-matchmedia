@@ -2,10 +2,8 @@
 import {IMatchMediaChannel} from "../contracts/IMatchMediaChannel";
 import {IMatchMediaChannelConfiguration} from "../contracts/IMatchMediaChannelConfiguration";
 import {noopMediaQueryChannel} from "./MatchMediaChannelFactory";
-import {Observable} from "rxjs";
-import * as _ from "lodash";
+import {Observable} from "@reactivex/rxjs";
 import "es6-collections";
-import {merge} from "~rxjs/operator/merge";
 
 class ObservableMatchMedia {
     private _channels: Map<string, IMatchMediaChannel<MediaQueryList>>;
@@ -59,7 +57,7 @@ class ObservableMatchMediaBuilder {
     }
 
     private _mergeObservables(allObservables: Observable<MediaQueryList>[]): Observable<MediaQueryList> {
-        return Observable.merge<MediaQueryList>(allObservables);
+        return Observable.merge<MediaQueryList>(...allObservables);
     }
 
     private _defineBroadcastChannel(mergedObservable: Observable<MediaQueryList>): void {

@@ -1,18 +1,22 @@
 ﻿import {IMatchMediaChannelFactory} from "../contracts/IMatchMediaChannelFactory";
 import {IMatchMediaChannelConfiguration} from "../contracts/IMatchMediaChannelConfiguration";
 import {IMatchMediaChannel} from "../contracts/IMatchMediaChannel";
-import {Observable} from "rxjs";
+import matchMediaStateProducer from "./MatchMediaStateProducer";
+import {Observable} from "@reactivex/rxjs";
 import "es6-collections";
 
 export const noopMediaQueryChannel: IMatchMediaChannel<MediaQueryList> = {
     channelName: "",
     mediaQuery: "",
-    observable: <Observable<MediaQueryList>> Observable.empty()
+    observable: Observable.empty<MediaQueryList>()
 };
 
 export default class MatchMediaChannelFactory implements IMatchMediaChannelFactory<MediaQueryList> {
     private _matchMedia: (mediaQuery: string) => MediaQueryList;
-    private _valueProducer = (matchMediaEvent) => matchMediaEvent;
+    private _valueProducer = (channelName: string, matchMediaEvent) => (matchMediaEvent: MediaQueryListEvent) => ({
+            channelName,
+            state: matchMediaStateProducer(matchMediaEvent)
+        });
     private _createdMediaChannels: Map<string, IMatchMediaChannel<MediaQueryList>>;
 
     constructor(window: Window) {
@@ -37,17 +41,17 @@ export default class MatchMediaChannelFactory implements IMatchMediaChannelFacto
     // endregion
 
     // region private methods
-    private _createObservableBy(list: MediaQueryList): Observable<MediaQueryList> {
+    private _createObservableBy(channelName: string, list: MediaQueryList): Observable<MediaQueryList> {
         return Observable.fromEventPattern(
             (listener: MediaQueryListListener) => list.addListener(listener),
             (listener: MediaQueryListListener) => list.removeListener(listener),
-            this._valueProducer
+            this._valueProducer(channelName)
         );
     }
 
     private _createMediaChannelObject({channelName, mediaQuery}: IMatchMediaChannelConfiguration) {
         const mediaQueryList = matchMedia(mediaQuery),
-            observable = this._createObservableBy(mediaQueryList);
+            observable = this._createObservableBy(channelName, mediaQueryList);
 
         return {
             channelName,
