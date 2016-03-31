@@ -6,7 +6,7 @@ import {Observable} from "@reactivex/rxjs";
 import "es6-collections";
 
 class ObservableMatchMedia {
-    private _channels: Map<string, IMatchMediaChannel<MediaQueryList>>;
+    protected _channels: Map<string, IMatchMediaChannel<MediaQueryList>>;
 
     constructor(channels: Map<string, IMatchMediaChannel<MediaQueryList>>) {
         this._channels = channels;
@@ -35,8 +35,8 @@ class ObservableMatchMedia {
 }
 
 class ObservableMatchMediaBuilder {
-    private _factory: IMatchMediaChannelFactory<MediaQueryList>;
-    private _channels: Map<string, IMatchMediaChannel<MediaQueryList>>;
+    protected _factory: IMatchMediaChannelFactory<MediaQueryList>;
+    protected _channels: Map<string, IMatchMediaChannel<MediaQueryList>>;
 
     // Todo: Make the ctor private in TS 2.0
     constructor(factory: IMatchMediaChannelFactory<MediaQueryList>) {

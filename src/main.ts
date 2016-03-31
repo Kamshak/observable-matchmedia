@@ -23,9 +23,9 @@ const bootstrap = (window) => {
     const factory = new MatchMediaChannelFactory(window);
     const channelConfiguration = _.map(_.keys(configurations), (configKey) => {
         if (_.includes(configKey, "only")) {
-            return;
+            return configurations[configKey];
         }
-        return configurations[configKey];
+        return;
     }).filter((val) => val !== undefined);
 
     // const channelConfiguration = _.valuesIn(configurations);
