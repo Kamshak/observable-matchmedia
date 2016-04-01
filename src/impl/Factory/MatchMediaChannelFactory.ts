@@ -1,19 +1,13 @@
-﻿import {IMatchMediaChannelFactory} from "../contracts/IMatchMediaChannelFactory";
-import {IMatchMediaChannelConfiguration} from "../contracts/IMatchMediaChannelConfiguration";
-import {IMatchMediaChannel} from "../contracts/IMatchMediaChannel";
-import matchMediaStateProducer from "./MatchMediaStateProducer";
+﻿import {IMatchMediaChannelFactory, IMatchMediaChannelConfiguration, IMatchMediaChannel} from "../../contracts/MatchMedia";
+import matchMediaStateProducer from "./../MatchMedia/MatchMediaStateProducer";
+import emptyMediaQueryChannel from "./EmptyMediaQueryChannel";
 import {Observable} from "@reactivex/rxjs";
-import "es6-collections";
+// import "es6-collections";
+import "es6-shim";
 
-export const noopMediaQueryChannel: IMatchMediaChannel<MediaQueryList> = {
-    channelName: "",
-    mediaQuery: "",
-    observable: Observable.empty<MediaQueryList>()
-};
-
-export default class MatchMediaChannelFactory implements IMatchMediaChannelFactory<MediaQueryList> {
+class MatchMediaChannelFactory implements IMatchMediaChannelFactory<MediaQueryList> {
     private _matchMedia: (mediaQuery: string) => MediaQueryList;
-    private _valueProducer = (channelName: string, matchMediaEvent) => (matchMediaEvent: MediaQueryListEvent) => ({
+    private _valueProducer = (channelName: string, matchMediaEvent) => (matchMediaEvent) => ({
             channelName,
             state: matchMediaStateProducer(matchMediaEvent)
         });
@@ -80,7 +74,7 @@ export default class MatchMediaChannelFactory implements IMatchMediaChannelFacto
     public get(channelName: string): IMatchMediaChannel<MediaQueryList> {
         return this._createdMediaChannels.has(channelName) ?
                     this._createdMediaChannels.get(channelName) :
-                    noopMediaQueryChannel;
+                    emptyMediaQueryChannel;
     }
 
     public has(channelName: string) {
@@ -94,3 +88,5 @@ export default class MatchMediaChannelFactory implements IMatchMediaChannelFacto
     }
     // endregion
 }
+
+export default MatchMediaChannelFactory;

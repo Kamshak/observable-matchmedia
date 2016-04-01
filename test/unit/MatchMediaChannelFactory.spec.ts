@@ -1,7 +1,7 @@
-import {noopMediaQueryChannel} from "../../src/impl/MatchMediaChannelFactory";
-import MatchMediaChannelFactory from "../../src/impl/MatchMediaChannelFactory";
-import {IMatchMediaChannel} from "../../src/contracts/IMatchMediaChannel";
-import {Observable} from "rxjs/Observable";
+import emptyMediaQueryChannel from "../../src/impl/Factory/EmptyMediaQueryChannel";
+import MatchMediaChannelFactory from "../../src/impl/Factory/MatchMediaChannelFactory";
+import IMatchMediaChannel from "../../src/contracts/MatchMedia/IMatchMediaChannel";
+import {Observable} from "@reactivex/rxjs";
 
 const mediumOnlyChannelConfig = {channelName: "small-only", mediaQuery: "only screen and (max-width: 39.9375em)"};
 
@@ -87,7 +87,7 @@ describe("A MatchMediaChannelFactory", () => {
 
             expect(() => channel = factory.get("this channel does not exist")).not.toThrow();
             expect(channel).toBeDefined();
-            expect(channel).toEqual(noopMediaQueryChannel);
+            expect(channel).toEqual(emptyMediaQueryChannel);
         });
     });
 

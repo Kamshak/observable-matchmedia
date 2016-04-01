@@ -4,5 +4,5 @@ export enum MatchMediaState {
 };
 
 export interface IMediaQueryEventStateProducer {
-    (ev): MatchMediaState;
+    (ev): string;
 }

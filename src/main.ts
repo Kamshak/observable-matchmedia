@@ -1,7 +1,7 @@
-﻿import MatchMediaChannelFactory from "./impl/MatchMediaChannelFactory";
-import {ObservableMatchMediaBuilder} from "./impl/ObservableMatchMedia";
+﻿import MatchMediaChannelFactory from "./impl/Factory/MatchMediaChannelFactory";
+import ObservableMatchMediaBuilder from "./impl/MatchMedia/ObservableMatchMediaBuilder";
 import * as _ from "lodash";
-import {IMatchMediaChannel} from "./contracts/IMatchMediaChannel";
+import IMatchMediaChannel from "./contracts/MatchMedia/IMatchMediaChannel";
 
 const configurations = {
     "small": {channelName: "small", mediaQuery: "only screen"},
@@ -30,11 +30,10 @@ const bootstrap = (window) => {
 
     // const channelConfiguration = _.valuesIn(configurations);
 
-    const observableMatchMedia =
-        ObservableMatchMediaBuilder
-            .createWith(factory)
-            .addChannels(...channelConfiguration)
-            .build();
+    const builder =  ObservableMatchMediaBuilder.createWith(factory);
+
+    builder.addChannels(...channelConfiguration);
+    const observableMatchMedia = builder.build();
 
     const broadCastChannel: IMatchMediaChannel<MediaQueryList> = observableMatchMedia.broadcastChannel,
           medium = observableMatchMedia.getChannel("medium"),

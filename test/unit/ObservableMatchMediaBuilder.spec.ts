@@ -1,6 +1,6 @@
-import {ObservableMatchMediaBuilder, ObservableMatchMedia} from "../../src/impl/ObservableMatchMedia";
-import {IMatchMediaChannelFactory} from "../../src/contracts/IMatchMediaChannelFactory";
-import MatchMediaChannelFactory from "../../src/impl/MatchMediaChannelFactory";
+import {ObservableMatchMedia, ObservableMatchMediaBuilder} from "../../src/impl/MatchMedia";
+import {IMatchMediaChannelFactory} from "../../src/contracts/MatchMedia";
+import MatchMediaChannelFactory from "../../src/impl/Factory/MatchMediaChannelFactory";
 
 const smallOnlyChannelConfig = {channelName: "small-only", mediaQuery: "only screen and (max-width: 39.9375em)"},
       mediumOnlyChannelConfig = {channelName: "medium-only", mediaQuery: "only screen and (max-width: 39.9375em)"},

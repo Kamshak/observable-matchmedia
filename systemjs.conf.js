@@ -10,6 +10,7 @@ System.config({
   map: {
     "@reactivex/rxjs": "npm:@reactivex/rxjs@5.0.0-beta.4",
     "es6-collections": "npm:es6-collections@0.5.6",
+    "es6-shim": "npm:es6-shim@0.35.0",
     "jasmine": "npm:jasmine@2.4.1",
     "lodash": "npm:lodash@4.6.1",
     "rxjs": "npm:rxjs@5.0.0-beta.3",
@@ -65,6 +66,9 @@ System.config({
     },
     "npm:core-util-is@1.0.2": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
+    },
+    "npm:es6-shim@0.35.0": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:exit@0.1.2": {
       "process": "github:jspm/nodelibs-process@0.1.2"

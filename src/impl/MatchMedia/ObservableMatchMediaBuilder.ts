@@ -1,40 +1,9 @@
-﻿import {IMatchMediaChannelFactory} from "../contracts/IMatchMediaChannelFactory";
-import {IMatchMediaChannel} from "../contracts/IMatchMediaChannel";
-import {IMatchMediaChannelConfiguration} from "../contracts/IMatchMediaChannelConfiguration";
-import {noopMediaQueryChannel} from "./MatchMediaChannelFactory";
+import {IMatchMediaChannel, IMatchMediaChannelFactory, IMatchMediaChannelConfiguration} from "../../contracts/MatchMedia";
 import {Observable} from "@reactivex/rxjs";
-import "es6-collections";
+import ObservableMatchMedia from "./ObservableMatchMedia";
+import "es6-shim";
 
-class ObservableMatchMedia {
-    protected _channels: Map<string, IMatchMediaChannel<MediaQueryList>>;
-
-    constructor(channels: Map<string, IMatchMediaChannel<MediaQueryList>>) {
-        this._channels = channels;
-    }
-
-    public static broadcastChannelName = "*";
-
-    public get broadcastChannel() {
-        return this._channels.get(ObservableMatchMedia.broadcastChannelName);
-    }
-
-    public getChannel(channelName: string) {
-        if (this._channels.has(channelName)) {
-            return this._channels.get(channelName);
-        }
-        return noopMediaQueryChannel;
-    }
-
-    public hasChannel(channelName: string): boolean {
-        return this._channels.has(channelName);
-    }
-
-    public get channelCount(): number {
-        return this._channels.size;
-    }
-}
-
-class ObservableMatchMediaBuilder {
+export default class ObservableMatchMediaBuilder {
     protected _factory: IMatchMediaChannelFactory<MediaQueryList>;
     protected _channels: Map<string, IMatchMediaChannel<MediaQueryList>>;
 
@@ -94,12 +63,10 @@ class ObservableMatchMediaBuilder {
 
     public build(): ObservableMatchMedia {
         const allObservables = this._allObservables,
-              mergedObservable = this._mergeObservables(allObservables);
+            mergedObservable = this._mergeObservables(allObservables);
 
         this._defineBroadcastChannel(mergedObservable);
 
         return new ObservableMatchMedia(this._channels);
     }
 }
-
-export {ObservableMatchMedia, ObservableMatchMediaBuilder};
