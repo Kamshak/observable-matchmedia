@@ -1,6 +1,6 @@
 import emptyMediaQueryChannel from "../../src/impl/Factory/EmptyMediaQueryChannel";
 import MatchMediaChannelFactory from "../../src/impl/Factory/MatchMediaChannelFactory";
-import IMatchMediaChannel from "../../src/contracts/MatchMedia/IMatchMediaChannel";
+import IMatchMediaChannel from "../../src/contracts/MatchMedia/Channel/IMatchMediaChannel";
 import {Observable} from "@reactivex/rxjs";
 
 const mediumOnlyChannelConfig = {channelName: "small-only", mediaQuery: "only screen and (max-width: 39.9375em)"};
@@ -20,8 +20,7 @@ describe("A MatchMediaChannelFactory", () => {
 
         it("that can't be called if window is not gives as parameter", () => {
             let factory = undefined;
-
-            expect(() => factory = new MatchMediaChannelFactory()).toThrow();
+            expect(() => factory = new MatchMediaChannelFactory(null)).toThrow();
         });
     });
 

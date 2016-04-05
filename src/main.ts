@@ -1,7 +1,7 @@
 ﻿import MatchMediaChannelFactory from "./impl/Factory/MatchMediaChannelFactory";
 import ObservableMatchMediaBuilder from "./impl/MatchMedia/ObservableMatchMediaBuilder";
 import * as _ from "lodash";
-import IMatchMediaChannel from "./contracts/MatchMedia/IMatchMediaChannel";
+import IMatchMediaChannel from "./contracts/MatchMedia/Channel/IMatchMediaChannel";
 
 const configurations = {
     "small": {channelName: "small", mediaQuery: "only screen"},

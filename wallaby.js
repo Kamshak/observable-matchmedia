@@ -1,4 +1,4 @@
-module.exports = function () {
+module.exports = function (wallaby) {
 
   return {
     files: [
@@ -12,7 +12,11 @@ module.exports = function () {
     ],
 
     // todo set compiler option to set another module format e.g amd
+    compilers: {
 
+      '**/*.ts': wallaby.compilers.typeScript({ module: 'amd' })
+    },
+    
     middleware: function (app, express) {
       app.use('/jspm_packages', express.static(require('path').join(__dirname, 'jspm_packages')));
     },

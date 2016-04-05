@@ -1,6 +1,6 @@
 import ObservableMatchMediaBuilder from "../../src/impl/MatchMedia/ObservableMatchMediaBuilder";
 import MatchMediaChannelFactory from "../../src/impl/Factory/MatchMediaChannelFactory";
-import IMatchMediaChannel from "../../src/contracts/MatchMedia/IMatchMediaChannel";
+import IMatchMediaChannel from "../../src/contracts/MatchMedia/Channel/IMatchMediaChannel";
 
 const smallOnlyChannelConfig = {channelName: "small-only", mediaQuery: "only screen and (max-width: 39.9375em)"},
       mediumOnlyChannelConfig = {channelName: "medium-only", mediaQuery: "only screen and (max-width: 39.9375em)"},
@@ -34,10 +34,10 @@ describe("An ObservableMatchMedia", () => {
 
         expect(observableMatchMedia.channelCount).toEqual(2);
         expect(observableMatchMedia.hasChannel("*")).toBe(true);
-        
+
         expect(() => broadcast = observableMatchMedia.broadcastChannel).not.toThrow();
         expect(broadcast).toBeDefined();
-        console.log(broadcast)
+        console.log(broadcast);
         // expect(broadcast.observable).toBeDefined();
     });
 

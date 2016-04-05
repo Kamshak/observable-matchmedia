@@ -30,7 +30,7 @@ describe("An ObservableMatchMediaBuilder", () => {
         xit("that must throw an error if called without a factory", () => {
             let builder = undefined;
 
-            expect(() => builder = ObservableMatchMediaBuilder.createWith()).toThrow();
+            expect(() => builder = ObservableMatchMediaBuilder.createWith(null)).toThrow();
             expect(builder).toBeUndefined();
         });
     });

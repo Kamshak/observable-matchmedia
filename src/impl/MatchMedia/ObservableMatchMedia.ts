@@ -1,4 +1,4 @@
-﻿import IMatchMediaChannel from "../../contracts/MatchMedia/IMatchMediaChannel";
+﻿import IMatchMediaChannel from "../../contracts/MatchMedia/Channel/IMatchMediaChannel";
 import emptyMediaQueryChannel from "../Factory/EmptyMediaQueryChannel";
 import "core-js/shim";
 

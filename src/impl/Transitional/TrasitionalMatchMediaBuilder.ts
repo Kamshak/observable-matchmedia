@@ -1,6 +1,6 @@
 import {IMatchMediaChannelFactory, IMatchMediaChannel} from "../../contracts/MatchMedia";
 import {ITransition, IObservableTransition} from "../../contracts/Transition";
-import {MatchMediaState} from "../../contracts/MatchMedia"
+import {MatchMediaState} from "../../contracts/MatchMedia";
 import {Observable} from "@reactivex/rxjs";
 import ObservableMatchMediaBuilder from "../MatchMedia/ObservableMatchMediaBuilder";
 import TransitionalMatchMedia from "./TransitionalMatchMedia";
@@ -38,16 +38,16 @@ class TransitionalMatchMediaBuilder extends ObservableMatchMediaBuilder {
 
     private _ensureChannelsExists(fromChannel: IMatchMediaChannel<MediaQueryList>, toChannel: IMatchMediaChannel<MediaQueryList>) {
         const areChannelNamesMissing = _.isEmpty(fromChannel.channelName) || _.isEmpty(toChannel.channelName),
-              areChannelsMissing = !this._channels.has(fromChannel.channelName) || !this._channels.has(toChannel.channelName);
+            areChannelsMissing = !this._channels.has(fromChannel.channelName) || !this._channels.has(toChannel.channelName);
 
         if (areChannelNamesMissing || areChannelsMissing) {
             throw new Error("[TransitionalMatchMediaBuilder]: can not determine transition channels");
         }
     }
 
-    private _determineChannels({fromChannelName, toChannelName}: ITransition) {
+    private _determineChannels({ from: fromChannelName, to: toChannelName }: ITransition) {
         const fromChannel = this._channels.get(fromChannelName),
-              toChannel = this._channels.get(toChannelName);
+            toChannel = this._channels.get(toChannelName);
 
         this._ensureChannelsExists(fromChannel, toChannel);
 
@@ -59,7 +59,7 @@ class TransitionalMatchMediaBuilder extends ObservableMatchMediaBuilder {
 
     private _containsTransition({from, to }: ITransition) {
         const array = Array.from(this._transitions);
-        return _.findIndex(array, {from, to}) !== -1; // does the combination already exists in channels?
+        return _.findIndex(array, { from, to }) !== -1; // does the combination already exists in channels?
     }
 
     private _addTransition(transition: ITransition) {
@@ -78,7 +78,7 @@ class TransitionalMatchMediaBuilder extends ObservableMatchMediaBuilder {
     private _ensureChannelsAreDefined() {
         const channelSize = this._channels.size;
 
-        if (! (this._atLeastTwo(channelSize, 2) && this._moduloTwo(channelSize))) {
+        if (!(this._atLeastTwo(channelSize, 2) && this._moduloTwo(channelSize))) {
             throw {
                 name: "NotEnoughChannelsException",
                 message: "There are not enough channels defined to define transitions"

@@ -1,11 +1,8 @@
-import {IMediaQueryEventStateProducer, MatchMediaState} from "../../contracts/MatchMedia/IMediaQueryEventStateProducer";
+import {IMediaQueryEventStateProducer, MatchMediaState, IMatchMediaEvent} from "../../contracts/MatchMedia";
 
-interface IMatchMediaEvent extends Event {
-    matches: boolean;
-}
 
 const matchMediaStateProducer: IMediaQueryEventStateProducer = (ev: IMatchMediaEvent ) => {
-    return (ev.matches === true) ? 
+    return (ev.matches === true) ?
         MatchMediaState[MatchMediaState.enter] :
         MatchMediaState[MatchMediaState.leave];
 };
