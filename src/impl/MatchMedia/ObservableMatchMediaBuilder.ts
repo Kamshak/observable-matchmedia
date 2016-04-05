@@ -1,7 +1,7 @@
 import {IMatchMediaChannel, IMatchMediaChannelFactory, IMatchMediaChannelConfiguration} from "../../contracts/MatchMedia";
 import {Observable} from "@reactivex/rxjs";
 import ObservableMatchMedia from "./ObservableMatchMedia";
-import "es6-shim";
+import "core-js/shim";
 
 export default class ObservableMatchMediaBuilder {
     protected _factory: IMatchMediaChannelFactory<MediaQueryList>;

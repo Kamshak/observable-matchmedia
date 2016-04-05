@@ -2,9 +2,9 @@
 # Created by https://www.gitignore.io/api/jspm,node,visualstudio,visualstudiocode
 
 ### transpiled ###
-**/*.js
-**/*.js.map
-**/*.d.ts
+build/**/*.js
+build/**/*.js.map
+build/**/*.d.ts
 
 ### typings ###
 typings

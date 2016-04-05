@@ -1,5 +1,5 @@
 ﻿import IMatchMediaChannelConfiguration from "./IMatchMediaChannelConfiguration";
-import {Observable} from "rxjs/Observable";
+import {Observable} from "@reactivex/rxjs";
 
 interface IMatchMediaChannel<TObserver> extends IMatchMediaChannelConfiguration {
     observable: Observable<TObserver>;

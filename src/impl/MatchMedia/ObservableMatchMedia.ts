@@ -1,7 +1,6 @@
 ﻿import IMatchMediaChannel from "../../contracts/MatchMedia/IMatchMediaChannel";
 import emptyMediaQueryChannel from "../Factory/EmptyMediaQueryChannel";
-import "es6-shim";
-//import "es6-collections";
+import "core-js/shim";
 
 class ObservableMatchMedia {
     protected _channels: Map<string, IMatchMediaChannel<MediaQueryList>>;

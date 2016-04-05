@@ -3,6 +3,7 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
+    "outDir": "build",
     "sourceMap": true,
     "declaration": true,
     "preserveConstEnums": true
@@ -11,6 +12,7 @@
     "jspm_packages",
     "node_modules",
     "typings/main.d.ts",
-    "typings/main"
+    "typings/main",
+    "build"
   ]
 }

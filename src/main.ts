@@ -52,5 +52,3 @@ const bootstrap = (window) => {
 };
 
 export {bootstrap};
-
-

@@ -5,8 +5,7 @@ import {Observable} from "@reactivex/rxjs";
 import ObservableMatchMediaBuilder from "../MatchMedia/ObservableMatchMediaBuilder";
 import TransitionalMatchMedia from "./TransitionalMatchMedia";
 import * as _ from "lodash";
-// import "es6-collections";
-import "es6-shim";
+import "core-js/shim";
 
 class TransitionalMatchMediaBuilder extends ObservableMatchMediaBuilder {
     private _transitions: Set<IObservableTransition<MediaQueryList>>;

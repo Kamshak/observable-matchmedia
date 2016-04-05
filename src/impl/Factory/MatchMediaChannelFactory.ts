@@ -2,8 +2,7 @@
 import matchMediaStateProducer from "./../MatchMedia/MatchMediaStateProducer";
 import emptyMediaQueryChannel from "./EmptyMediaQueryChannel";
 import {Observable} from "@reactivex/rxjs";
-// import "es6-collections";
-import "es6-shim";
+import "core-js/shim";
 
 class MatchMediaChannelFactory implements IMatchMediaChannelFactory<MediaQueryList> {
     private _matchMedia: (mediaQuery: string) => MediaQueryList;

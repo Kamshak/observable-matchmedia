@@ -23,28 +23,23 @@
     "install-all": "npm install && typings install && jspm install"
   },
   "devDependencies": {
-    "@reactivex/rxjs": "^5.0.0-beta.4",
+    "@reactivex/rxjs": "5.0.0-beta.4",
     "browser-sync": "^2.11.2",
-    "es6-collections": "^0.5.6",
-    "expect": "^1.16.0",
+    "core-js": "^2.2.1",
     "jasmine": "^2.4.1",
     "jspm": "^0.16.31",
     "lodash": "^4.6.1",
-    "requirejs": "^2.2.0",
     "systemjs": "^0.19.24",
     "tslint": "^3.6.0",
     "typescript": "^1.8.9",
     "typings": "^0.7.9"
   },
-  "dependencies": {
-    "es6-shim": "^0.35.0"
-  },
+  "dependencies": {},
   "jspm": {
     "configFile": "systemjs.conf.js",
     "dependencies": {
-      "@reactivex/rxjs": "^5.0.0-beta.4",
-      "es6-collections": "^0.5.6",
-      "es6-shim": "^0.35.0",
+      "@reactivex/rxjs": "5.0.0-beta.4",
+      "core-js": "^2.2.1",
       "lodash": "^4.6.1"
     },
     "devDependencies": {}
